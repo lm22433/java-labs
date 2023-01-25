@@ -23,6 +23,14 @@ class Robot {
     }
   }
 
+  void dance(String moves) {
+    if (powerLevel >= 1.0f) {
+      System.out.println(name + " dances a " + moves);
+    } else {
+      System.out.println(name + "is too weak to dance!");
+    }
+  }
+
   void charge(float amount) {
     System.out.println(name + " charges.");
     powerLevel = powerLevel + amount;
