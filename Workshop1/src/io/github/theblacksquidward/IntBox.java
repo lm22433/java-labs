@@ -8,6 +8,10 @@ public class IntBox {
         this.x = x;
     }
 
+    public IntBox(IntBox that) {
+        this.x = that.x;
+    }
+
     public IntBox add(int v) {
         x+=v;
         return this;
