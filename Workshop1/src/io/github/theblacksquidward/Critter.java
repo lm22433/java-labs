@@ -9,7 +9,7 @@ public class Critter {
     }
 
     void poke() {
-        System.out.println("I was poked.");
+        System.out.println(name + " was poked.");
     }
 
 }
