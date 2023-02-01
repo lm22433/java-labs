@@ -12,4 +12,12 @@ public class Critter {
         System.out.println(name + " was poked.");
     }
 
+    public String getName() {
+        return name;
+    }
+
+    void eat(Critter critter) {
+        System.out.println(name + " ate " + critter.getName() + ".");
+    }
+
 }
