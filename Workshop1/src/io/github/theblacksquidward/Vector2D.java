@@ -14,4 +14,12 @@ public class Vector2D {
     public String toString() {
         return "Vector2D(" + x + ", " + y + ")";
     }
+
+    public double modulus() {
+
+        double a  = Math.pow(this.x, 2) + Math.pow(this.y, 2);
+        return Math.sqrt(a);
+    }
+
+
 }
