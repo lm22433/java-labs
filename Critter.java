@@ -1,8 +1,8 @@
 public class Critter {
     String name;
 
-    void Critter(name) {
-        this.name = name
+    void Critter(String name) {
+        this.name = name;
     }
 
     void poke() {
