@@ -5,6 +5,7 @@ class RobotWorld {
     c3po.talk("'Hello, Java!'");
     c3po.charge(1.1f);
     c3po.dance("Waltz");
+    Robot Harry = new Robot("Harry");
   }
 
 }
