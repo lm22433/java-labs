@@ -13,6 +13,16 @@ public class IntBox {
         return this;
     }
 
+    public IntBox subtract(int v) {
+        x-=v;
+        return this;
+    }
+
+    public IntBox multiply(int v) {
+        x = x*v;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "IntBox(" + x + ")";
