@@ -37,5 +37,12 @@ public class Vector2D {
         return Math.sqrt(a);
     }
 
+    public double distance(Vector2D v) {
+
+        Vector2D a = v.scale(-1);
+        Vector2D b = this.add(a);
+        return b.modulus();
+    }
+
 
 }
