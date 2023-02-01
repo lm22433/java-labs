@@ -18,6 +18,14 @@ public class Vector2D {
         return y;
     }
 
+    Vector2D add(Vector2D v) {
+        return new Vector2D(x + v.getX(), y + v.getY());
+    }
+
+    Vector2D scale(double f) {
+        return new Vector2D(x * f, y * f);
+    }
+
     @Override
     public String toString() {
         return "Vector2D(" + x + ", " + y + ")";
