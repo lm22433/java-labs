@@ -37,27 +37,13 @@ public class Triangle {
     }
 
     public static void makeTriangles(int n) {
-
-        if (n == 1) {
-            System.out.println(new Triangle(1,1,1));
-            return;
-        }
-
-        int a = 1;
-        int b = 1;
-        int c = 1;
-
-        while (a <= n) {
-            while (b <= n) {
-                while (c <= n) {
-                    System.out.println(new Triangle(a,b,c));
-                    c++;
+        for (int a = 1; a <= n; a++) {
+            for (int b = 1; b <= n; b++) {
+                for (int c = 1; c <= n; c++) {
+                    System.out.println(new Triangle(a, b, c));
                 }
-                b++;
-                c = 1;
             }
-            a++;
-            b = 1;
         }
     }
+    
 }
