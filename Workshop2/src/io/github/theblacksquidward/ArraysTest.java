@@ -5,9 +5,10 @@ public class ArraysTest {
     public static void main(String[] args) {
         int[] xs = new int[] {1,2,6,5};
         int[] ys = new int[] {};
+        int[] zs = null;
 
         try {
-            System.out.println(ArraysTest.max(null));
+            System.out.println(ArraysTest.max(zs));
         }
         catch (IllegalArgumentException e) {
             System.out.println(e);
