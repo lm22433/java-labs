@@ -7,7 +7,7 @@ public class TestUtils {
     }
 
     static void assertEquals(int expected, int actual, String prefix) {
-
+        if (expected != actual) throw new AssertionError(prefix + ' expected ' + expected + ' got ' + actual);
     }
 
 }
