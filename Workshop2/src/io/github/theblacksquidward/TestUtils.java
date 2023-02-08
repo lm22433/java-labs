@@ -10,4 +10,15 @@ public class TestUtils {
         if (expected != actual) throw new AssertionError(prefix + " expected " + expected + " got " + actual);
     }
 
+    static void assertUniversalEquals(Object expected, Object actual, String prefix) {
+        if (expected != null) {
+            if (!expected.equals(actual))
+                throw new AssertionError(prefix + " expecting " + expected + " but was " + actual);
+        } else {
+            if (actual != expected)
+                throw new AssertionError(prefix + " expecting " + expected + " but was " + actual);
+        }
+    }
+
+
 }
