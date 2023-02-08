@@ -2,7 +2,7 @@ package io.github.theblacksquidward;
 
 public class StringBox {
 
-    String value;
+    private String value;
 
     public StringBox(String value) {
         this.value = value;

@@ -9,5 +9,8 @@ public class StringTest {
 
         System.out.println(StringUtils.append2(x));
 
+        StringBox stringBox = new StringBox("a");
+        StringUtils.concat(stringBox);
+        System.out.println(stringBox.getValue());
     }
 }

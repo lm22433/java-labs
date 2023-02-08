@@ -3,7 +3,7 @@ package io.github.theblacksquidward;
 public class StringUtils {
 
     static void append(String a) {
-        a.concat("b");
+        // Not Possible - Strings are IMMUTABLE.
     }
 
     static String append2(final String a) {
@@ -12,7 +12,8 @@ public class StringUtils {
     }
 
     static void concat(StringBox a) {
-
+        String value = a.getValue();
+        a.setValue(value + "b");
     }
 
 
