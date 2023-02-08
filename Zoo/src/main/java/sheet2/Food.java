@@ -10,4 +10,8 @@ public class Food {
 		return "dog eats food";
 	}
 
+	public String eaten(Cat animal) {
+		return "cat eats food";
+	}
+
 }
