@@ -4,9 +4,7 @@ public class OnceUponATime {
         return house.accept(chartedSurveyor);
     }
 
-    public static Integer estimateHeatingBillPCM(House house) {
-        return -1;
-    }
+    public static Integer estimateHeatingBillPCM(House house) {return house.accept(new EnergySurveyor());}
 
     public static String letMeComeIn(House house) {
         return house.accept(new StoryTeller());
