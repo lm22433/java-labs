@@ -1,5 +1,6 @@
 package io.github.theblacksquidward;
 
+import java.util.NoSuchElementException;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -36,6 +37,7 @@ public class Maybe<T> {
     }
 
     public T get() {
+        if (value == null) throw new NoSuchElementException("Error: Maybe is empty.");
         return value;
     }
 
