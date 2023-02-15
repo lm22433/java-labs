@@ -1,5 +1,7 @@
 package io.github.theblacksquidward;
 
+import java.util.Locale;
+
 public class FormattersWorld {
 
     public static void main(String[] args) {
@@ -14,6 +16,13 @@ public class FormattersWorld {
         @Override
         public String format(String input) {
             return input;
+        }
+    }
+
+    class UppercaseFormat implements Formatter {
+        @Override
+        public String format(String input) {
+            return input.toUpperCase();
         }
     }
 
