@@ -10,8 +10,8 @@ public class Main {
         List<String> names = List.of("Harry", "Josh", "Lewis", "Fin", "Bagga");
         reverse(names).forEach(System.out::println);
 
-        Unit x = new Unit();
-        Unit y = new Unit();
+        Unit x = Unit.INSTANCE;
+        Unit y = Unit.INSTANCE;
 
         if (x == y) System.out.println("Yes");
         if (x.equals(y)) System.out.println("Yes again");
