@@ -3,6 +3,7 @@ package io.github.theblacksquidward;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Main {
 
@@ -15,6 +16,16 @@ public class Main {
 
         if (x == y) System.out.println("Yes");
         if (x.equals(y)) System.out.println("Yes again");
+
+        Maybe<Integer> maybe = Maybe.just(5);
+        Maybe<Integer> nothing = Maybe.nothing();
+
+        System.out.println(maybe.get());
+        try {
+            System.out.println(nothing.get());
+        } catch (NoSuchElementException e) {
+            System.out.println("Error: Maybe is empty.");
+        }
     }
 
     static boolean isEqual(Object left, Object right) {
