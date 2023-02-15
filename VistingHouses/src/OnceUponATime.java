@@ -9,7 +9,7 @@ public class OnceUponATime {
     }
 
     public static String letMeComeIn(House house) {
-        return "";
+        return house.accept(new StoryTeller());
     }
 
     public static void main(String[] args) {
