@@ -8,6 +8,8 @@ import java.util.NoSuchElementException;
 public class Main {
 
     public static void main(String[] args) {
+
+        if (Main.isEqual2("left",false)) System.out.println("Boom");;
         List<String> names = List.of("Harry", "Josh", "Lewis", "Fin", "Bagga");
         reverse(names).forEach(System.out::println);
 
