@@ -6,22 +6,9 @@ public class FormattersWorld {
 
     public static void main(String[] args) {
         final String input = "Hello world!";
-        Stream.of(new IdentifyFormatter(), new UppercaseFormatter())
+        Stream.of(new IdentifyFormatter(), new UppercaseFormatter(), new ROT13Formatter())
                 .map(formatter -> formatter.format(input))
                 .forEach(System.out::println);
-    }
-
-    public static String rot13(String input) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            if       (c >= 'a' && c <= 'm') c += 13;
-            else if  (c >= 'A' && c <= 'M') c += 13;
-            else if  (c >= 'n' && c <= 'z') c -= 13;
-            else if  (c >= 'N' && c <= 'Z') c -= 13;
-            sb.append(c);
-        }
-        return sb.toString();
     }
 
     interface Formatter {
@@ -43,10 +30,18 @@ public class FormattersWorld {
     }
 
     static class ROT13Formatter implements Formatter {
-
         @Override
         public String format(String input) {
-            return rot13(input);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < input.length(); i++) {
+                char c = input.charAt(i);
+                if       (c >= 'a' && c <= 'm') c += 13;
+                else if  (c >= 'A' && c <= 'M') c += 13;
+                else if  (c >= 'n' && c <= 'z') c -= 13;
+                else if  (c >= 'N' && c <= 'Z') c -= 13;
+                sb.append(c);
+            }
+            return sb.toString();
         }
     }
 
