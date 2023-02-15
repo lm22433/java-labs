@@ -1,25 +1,28 @@
 package io.github.theblacksquidward;
 
-import java.util.Locale;
+import java.util.stream.Stream;
 
 public class FormattersWorld {
 
     public static void main(String[] args) {
-
+        final String input = "Hello world!";
+        Stream.of(new IdentifyFormatter(), new UppercaseFormatter())
+                .map(formatter -> formatter.format(input))
+                .forEach(System.out::println);
     }
 
     interface Formatter {
         String format(String input);
     }
 
-    class IdentifyFormat implements Formatter {
+    static class IdentifyFormatter implements Formatter {
         @Override
         public String format(String input) {
             return input;
         }
     }
 
-    class UppercaseFormat implements Formatter {
+    static class UppercaseFormatter implements Formatter {
         @Override
         public String format(String input) {
             return input.toUpperCase();
