@@ -87,18 +87,45 @@ public class Search {
 			ImmutableValueGraph<Integer, Integer> graph,
 			Integer source,
 			Integer destination) {
-		Set<EndpointPair<Integer>> incidentEdges = graph.incidentEdges(source);
+		List<Integer> nodes = new ArrayList<>();
+		List<Integer> distance = new ArrayList<>();
+		List<Integer> previous = new ArrayList<>();
 
-		List<Integer> nodes;
-		List<Integer> distance;
-		List<Integer> previous;
+		nodes.add(source);
+		distance.add(0);
+		previous.add(0);
 
+		for (int i = 0; i < graph.nodes().size(); i++) {
+			int finalI = i;
+			Set<EndpointPair<Integer>> incidentEdges = graph.incidentEdges(nodes.get(finalI));
+			incidentEdges.forEach(edge -> {
+				if (!nodes.contains(edge.nodeU())) {
+					nodes.add(edge.nodeU());
+					distance.add(distance.get(finalI) + graph.edgeValue(edge).get());
+					previous.add(finalI);
+				}
+				else {
+					int index = nodes.indexOf(edge.nodeU());
+					if (distance.get(finalI) + graph.edgeValue(edge).get() < distance.get(index)) {
+						distance.set(index,distance.get(finalI) + graph.edgeValue(edge).get());
+						previous.set(index,finalI);
+					}
+				}
+			});
 
+		}
 
+		List<Integer> output = new ArrayList<>();
+		output.add(destination);
+		int index = (nodes.indexOf(destination));
 
+		while (previous.get(index) != index) {
+			index = previous.get(index);
+			output.add(nodes.get(index));
+		}
 
-		incidentEdges.forEach(edge -> System.out.println(edge.nodeU() + " " + edge.nodeV()));
-		return null;
+		Collections.reverse(output);
+		return output;
 	}
 
 	// reads in a graph stored in plan text, not part of any question but feel free to study at how
