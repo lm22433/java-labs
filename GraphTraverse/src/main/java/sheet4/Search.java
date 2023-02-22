@@ -60,9 +60,11 @@ public class Search {
 			ImmutableValueGraph<Integer, Integer> graph) {
 		Set<Integer> output = new HashSet<>();
 		graph.nodes().forEach(node -> {
-			int sum = graph.edges().stream()
-					.filter(edge -> edge.nodeU().equals(node) || edge.nodeV().equals(node))
-					.mapToInt(edge -> graph.edgeValue(edge).get()).sum();
+			int sum = graph.incidentEdges(node).stream()
+					.map(graph::edgeValue)
+					.filter(Optional::isPresent)
+					.mapToInt(Optional::get)
+					.sum();
 			if (sum > 20) output.add(node);
 		});
 		return output;
