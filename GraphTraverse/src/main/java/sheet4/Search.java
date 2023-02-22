@@ -5,10 +5,7 @@ import com.google.common.graph.ImmutableValueGraph;
 import com.google.common.graph.ImmutableValueGraph.Builder;
 import com.google.common.graph.ValueGraphBuilder;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("UnstableApiUsage")
@@ -61,19 +58,13 @@ public class Search {
 	 */
 	static Set<Integer> findAllNodesWithEdgeSumGreaterThan20(
 			ImmutableValueGraph<Integer, Integer> graph) {
-		Set<Integer> nodes = graph.nodes();
-		Set<EndpointPair<Integer>> edges = graph.edges();
-
-
 		Set<Integer> output = new HashSet<>();
-
-		nodes.forEach(node -> {
-			int sum = edges.stream()
+		graph.nodes().forEach(node -> {
+			int sum = graph.edges().stream()
 					.filter(edge -> edge.nodeU().equals(node) || edge.nodeV().equals(node))
-					.mapToInt(edge -> (int) graph.edgeValue(edge).get()).sum();
+					.mapToInt(edge -> graph.edgeValue(edge).get()).sum();
 			if (sum > 20) output.add(node);
 		});
-
 		return output;
 	}
 
@@ -96,7 +87,18 @@ public class Search {
 			ImmutableValueGraph<Integer, Integer> graph,
 			Integer source,
 			Integer destination) {
-		throw new UnsupportedOperationException("Implement me");
+		Set<EndpointPair<Integer>> incidentEdges = graph.incidentEdges(source);
+
+		List<Integer> nodes;
+		List<Integer> distance;
+		List<Integer> previous;
+
+
+
+
+
+		incidentEdges.forEach(edge -> System.out.println(edge.nodeU() + " " + edge.nodeV()));
+		return null;
 	}
 
 	// reads in a graph stored in plan text, not part of any question but feel free to study at how
