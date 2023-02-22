@@ -1,10 +1,13 @@
 package sheet4;
 
+import com.google.common.graph.EndpointPair;
 import com.google.common.graph.ImmutableValueGraph;
 import com.google.common.graph.ImmutableValueGraph.Builder;
 import com.google.common.graph.ValueGraphBuilder;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,7 +21,7 @@ public class Search {
 	 * @return set of all the nodes in the given graph
 	 */
 	static Set<Integer> listAllNodes(ImmutableValueGraph<Integer, Integer> graph) {
-		throw new UnsupportedOperationException("Implement me");
+		return graph.nodes();
 	}
 
 	/**
@@ -28,7 +31,11 @@ public class Search {
 	 * @return list of all the edges in the given graph, the order is not important
 	 */
 	static List<Integer> listAllEdgeValues(ImmutableValueGraph<Integer, Integer> graph) {
-		throw new UnsupportedOperationException("Implement me");
+		return graph.edges().stream()
+				.map(graph::edgeValue)
+				.filter(Optional::isPresent)
+				.map(Optional::get)
+				.collect(Collectors.toList());
 	}
 
 	/**
@@ -39,7 +46,9 @@ public class Search {
 	 */
 	static Set<Integer> findAllNodeWith4OrMoreEdges(
 			ImmutableValueGraph<Integer, Integer> graph) {
-		throw new UnsupportedOperationException("Implement me");
+		return graph.nodes().stream()
+				.filter(node -> graph.degree(node) >= 4)
+				.collect(Collectors.toSet());
 	}
 
 	/**
@@ -52,7 +61,20 @@ public class Search {
 	 */
 	static Set<Integer> findAllNodesWithEdgeSumGreaterThan20(
 			ImmutableValueGraph<Integer, Integer> graph) {
-		throw new UnsupportedOperationException("Implement me");
+		Set<Integer> nodes = graph.nodes();
+		Set<EndpointPair<Integer>> edges = graph.edges();
+
+
+		Set<Integer> output = new HashSet<>();
+
+		nodes.forEach(node -> {
+			int sum = edges.stream()
+					.filter(edge -> edge.nodeU().equals(node) || edge.nodeV().equals(node))
+					.mapToInt(edge -> (int) graph.edgeValue(edge).get()).sum();
+			if (sum > 20) output.add(node);
+		});
+
+		return output;
 	}
 
 
