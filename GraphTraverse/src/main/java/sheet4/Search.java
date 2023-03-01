@@ -58,16 +58,13 @@ public class Search {
 	 */
 	static Set<Integer> findAllNodesWithEdgeSumGreaterThan20(
 			ImmutableValueGraph<Integer, Integer> graph) {
-		Set<Integer> output = new HashSet<>();
-		graph.nodes().forEach(node -> {
-			int sum = graph.incidentEdges(node).stream()
-					.map(graph::edgeValue)
-					.filter(Optional::isPresent)
-					.mapToInt(Optional::get)
-					.sum();
-			if (sum > 20) output.add(node);
-		});
-		return output;
+		return graph.nodes().stream()
+				.filter(node -> graph.incidentEdges(node).stream()
+						.map(graph::edgeValue)
+						.filter(Optional::isPresent)
+						.mapToInt(Optional::get)
+						.sum() > 20)
+				.collect(Collectors.toSet());
 	}
 
 
